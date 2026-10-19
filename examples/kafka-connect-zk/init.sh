@@ -20,6 +20,7 @@ get-kafka() {
     -x compileTestScala \
     -x checkstyleMain \
     -x checkstyleTest \
+    -x spotlessCheck \
     -x trogdor:compileJava \
     -x jmh-benchmarks:compileJava
   cd -

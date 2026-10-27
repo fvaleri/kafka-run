@@ -158,6 +158,7 @@ transaction.state.log.min.isr=1
 share.coordinator.state.topic.replication.factor=2
 share.coordinator.state.topic.min.isr=1
 mirror.state.topic.replication.factor=2
+mirror.state.topic.min.isr=1
 unstable.api.versions.enable=true
 unstable.feature.versions.enable=true
 EOF
@@ -198,6 +199,7 @@ transaction.state.log.min.isr=1
 share.coordinator.state.topic.replication.factor=2
 share.coordinator.state.topic.min.isr=1
 mirror.state.topic.replication.factor=2
+mirror.state.topic.min.isr=1
 unstable.api.versions.enable=true
 unstable.feature.versions.enable=true
 EOF
@@ -229,7 +231,7 @@ test-setup() {
   test-teardown
   cleanup
   get-kafka https://github.com/apache/kafka.git 3.9.2 "$SRC_HOME"
-  get-kafka https://github.com/showuon/kafka.git cm-20261018 "$DST_HOME"
+  get-kafka https://github.com/showuon/kafka.git cm-20261027 "$DST_HOME"
 
   echo "Starting Kafka 3.9.2 (ZK) as source cluster"
   cd "$SRC_HOME"

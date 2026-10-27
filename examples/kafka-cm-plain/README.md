@@ -77,6 +77,7 @@ pkill -SIGKILL -ef "ConsoleConsumer" ||true
 
 wait-for-lag-zero "$DST_BOOTSTRAP"
 wait-for-meta-sync "$DST_BOOTSTRAP"
+"$DST_HOME"/bin/kafka-cluster-mirrors.sh --bootstrap-server "$DST_BOOTSTRAP" --describe
 ```
 
 ## Verify synchronization

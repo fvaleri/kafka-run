@@ -40,7 +40,7 @@ echo "__________ DST __________"
 # No key is set so the default partitioner round-robins across all partitions
 for topic in my-topic-a my-topic-b new-topic-a; do
   "$SRC_HOME"/bin/kafka-producer-perf-test.sh --topic "$topic" --throughput 1000 \
-    --num-records 100000 --record-size 512 --producer.config "$TEST_DIR"/client.properties \
+    --num-records 10000000 --record-size 512 --producer.config "$TEST_DIR"/client.properties \
     --producer-props bootstrap.servers="$SRC_BOOTSTRAP" >/dev/null 2>&1 &
   disown
 done

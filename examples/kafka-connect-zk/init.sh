@@ -104,24 +104,6 @@ EOF
     "$KAFKA_HOME"/bin/connect-distributed.sh -daemon "$TEST_DIR"/server"${ref[id]}"/config/server.properties
 }
 
-test-teardown() {
-  echo "Killing all running procs"
-  pkill -SIGKILL -ef "kafka.tools" ||true
-  pkill -SIGKILL -ef "cli.ConnectDistributed" ||true
-  pkill -SIGKILL -ef "kafka.Kafka" ||true
-  pkill -SIGKILL -ef "quorum.QuorumPeerMain" ||true
-}
-
-cleanup() {
-  read -p "Are you sure you want to delete $TEST_DIR? (yes/no): " confirm
-  if [[ "$confirm" == "yes" ]]; then
-    rm -rf "$TEST_DIR"
-    echo "Cleanup complete"
-  else
-    echo "Cleanup cancelled"
-  fi
-}
-
 test-setup() {
   test-teardown
   cleanup
@@ -135,6 +117,21 @@ test-setup() {
   for i in {2..4}; do start-connect "$i"; done
 
   sleep 2
+}
+
+test-teardown() {
+  echo "Killing all running procs"
+  pkill -SIGKILL -ef "kafka.tools" ||true
+  pkill -SIGKILL -ef "cli.ConnectDistributed" ||true
+  pkill -SIGKILL -ef "kafka.Kafka" ||true
+  pkill -SIGKILL -ef "quorum.QuorumPeerMain" ||true
+}
+
+cleanup() {
+  read -r -p "Delete $TEST_DIR? [Y/n]: " confirm
+  if [[ -z "$confirm" || "${confirm^^}" == "Y" ]]; then
+    rm -rf -- "$TEST_DIR" && echo "DONE"
+  fi
 }
 
 test-setup

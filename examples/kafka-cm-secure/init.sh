@@ -395,12 +395,9 @@ test-teardown() {
 }
 
 cleanup() {
-  read -p "Are you sure you want to delete $TEST_DIR? (yes/no): " confirm
-  if [[ "$confirm" == "yes" ]]; then
-    rm -rf "$TEST_DIR"
-    echo "Cleanup complete"
-  else
-    echo "Cleanup cancelled"
+  read -r -p "Delete $TEST_DIR? [Y/n]: " confirm
+  if [[ -z "$confirm" || "${confirm^^}" == "Y" ]]; then
+    rm -rf -- "$TEST_DIR" && echo "DONE"
   fi
 }
 

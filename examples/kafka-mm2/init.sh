@@ -202,7 +202,7 @@ config_checkp() {
 
 test-setup() {
   test-teardown
-  cleanup
+  test-cleanup
   get-kafka https://github.com/apache/kafka.git 4.3.1 "$KAFKA_HOME"
 
   echo "Starting cluster A (source)"
@@ -239,7 +239,7 @@ test-teardown() {
   pkill -SIGKILL -ef "kafka.Kafka" ||true
 }
 
-cleanup() {
+test-cleanup() {
   read -r -p "Delete $TEST_DIR? [Y/n]: " confirm
   if [[ -z "$confirm" || "${confirm^^}" == "Y" ]]; then
     rm -rf -- "$TEST_DIR" && echo "DONE"

@@ -98,5 +98,5 @@ bin/kafka-configs.sh --bootstrap-server "$BOOTSTRAP" --alter --entity-type topic
 ```sh
 cd -
 test-teardown
-cleanup
+test-cleanup
 ```

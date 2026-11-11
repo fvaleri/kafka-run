@@ -184,5 +184,5 @@ bin/kafka-console-consumer.sh --bootstrap-server "$DST_BOOTSTRAP" \
 ```sh
 cd -
 test-teardown
-cleanup
+test-cleanup
 ```

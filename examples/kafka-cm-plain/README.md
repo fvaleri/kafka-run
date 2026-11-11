@@ -130,5 +130,5 @@ wait-for-meta-sync "$DST_BOOTSTRAP"
 
 ```sh
 test-teardown
-cleanup
+test-cleanup
 ```

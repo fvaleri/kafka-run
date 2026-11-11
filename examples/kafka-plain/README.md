@@ -70,5 +70,5 @@ bin/kafka-cluster.sh unregister --bootstrap-server "$BOOTSTRAP" --id "${server7[
 ```sh
 cd -
 test-teardown
-cleanup
+test-cleanup
 ```

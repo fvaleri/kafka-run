@@ -99,5 +99,5 @@ curl -s -X PUT -H "Content-Type:application/json" http://localhost:8083/admin/lo
 ```sh
 cd -
 test-teardown
-cleanup
+test-cleanup
 ```

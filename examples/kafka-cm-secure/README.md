@@ -157,5 +157,5 @@ wait-for-meta-sync "$DST_BOOTSTRAP" "$TEST_DIR"/kafka.properties
 
 ```sh
 test-teardown
-cleanup
+test-cleanup
 ```

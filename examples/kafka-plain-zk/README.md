@@ -31,5 +31,5 @@ bin/kafka-console-consumer.sh --bootstrap-server "$BOOTSTRAP" --topic my-topic -
 ```sh
 cd -
 test-teardown
-cleanup
+test-cleanup
 ```

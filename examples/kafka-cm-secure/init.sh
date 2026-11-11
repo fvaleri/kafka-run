@@ -320,9 +320,9 @@ EOF
 
 test-setup() {
   test-teardown
-  cleanup
+  test-cleanup
   get-kafka https://github.com/apache/kafka.git 3.9.2 "$SRC_HOME"
-  get-kafka https://github.com/showuon/kafka.git cm-20261027 "$DST_HOME"
+  get-kafka https://github.com/showuon/kafka.git cm-20261120 "$DST_HOME"
   create-crt "$TEST_DIR"
   create-jks "$TEST_DIR"
 
@@ -394,7 +394,7 @@ test-teardown() {
   pkill -SIGKILL -ef "quorum.QuorumPeerMain" ||true
 }
 
-cleanup() {
+test-cleanup() {
   read -r -p "Delete $TEST_DIR? [Y/n]: " confirm
   if [[ -z "$confirm" || "${confirm^^}" == "Y" ]]; then
     rm -rf -- "$TEST_DIR" && echo "DONE"
